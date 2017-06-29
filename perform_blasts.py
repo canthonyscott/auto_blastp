@@ -5,6 +5,7 @@ from sqlalchemy.orm import sessionmaker
 import os
 import logging
 from NCBPy.BLAST import ProteinBlast
+from NCBPy.Filtering import Filtering
 import time
 import subprocess
 
@@ -124,4 +125,20 @@ while True:
 
 
 logging.info("Completed Table")
+
+# takes all of the species and filter them. Add this data
+logging.info("Filtering the species list")
+results = session.query(Antibodies).all()
+data = []
+for result in results:
+    data.append(result.species)
+filtering = Filtering()
+new_data = filtering.filter_list_data(data)
+
+for result, individual in zip(results, new_data):
+    result.filtered_species = individual
+
+session.commit()
+
 subprocess.call(['/Finish.sh'])
+
