@@ -15,7 +15,8 @@ print("Init script completed")
 
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
-logging.basicConfig(filename='data/BLAST_LOG.log', level=logging.INFO)
+logging.basicConfig(filename='data/BLAST_LOG.log', level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 
 # If using a AWS MySQL Database, uncomment and modify below
 # engine = create_engine('mysql+pymysql://user:password@database.cvtmmkwukt6q.us-east-1.rds.amazonaws.com:3306/table', echo=False)
