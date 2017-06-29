@@ -6,7 +6,7 @@ from xml.parsers.expat import ExpatError
 
 class ProteinBlast:
 
-    def __init__(self, instance='https://blast.ncbi.nlm.nih.gov/Blast.cgi', wait=0):
+    def __init__(self, instance='https://blast.ncbi.nlm.nih.gov/Blast.cgi', wait=3):
         self.RID = []
         self.unparsed_RIDs = []
         self.parsed_RIDs = []
