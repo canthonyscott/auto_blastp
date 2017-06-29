@@ -139,6 +139,7 @@ for result, individual in zip(results, new_data):
     result.filtered_species = individual
 
 session.commit()
-
+logging.info("Filtered species commited to the database")
+logging.info("Generating CSV files for you.")
 subprocess.call(['/Finish.sh'])
-
+logging.info("I am finished. Goodbye!")
